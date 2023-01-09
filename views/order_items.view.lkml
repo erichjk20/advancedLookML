@@ -109,6 +109,13 @@ view: order_items {
     sql: ${gross_margin} ;;
   }
 
+  measure: average_gross_margin {
+    label: "Average Gross Margin"
+    type: average
+    value_format_name: usd
+    sql: ${gross_margin} ;;
+  }
+
   dimension_group: shipped {
     type: time
     timeframes: [
