@@ -95,6 +95,20 @@ view: order_items {
     sql: ${sale_price} ;;
   }
 
+  dimension: gross_margin {
+    label: "Gross Margin"
+    type: number
+    value_format_name: usd
+    sql: ${sale_price} - ${inventory_items.cost};;
+  }
+
+  measure: total_gross_margin {
+    label: "Total Gross Margin"
+    type: sum
+    value_format_name: usd
+    sql: ${gross_margin} ;;
+  }
+
   dimension_group: shipped {
     type: time
     timeframes: [
