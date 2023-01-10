@@ -138,12 +138,25 @@ view: order_items {
   }
 
   measure: customer_returned_count {
-    label: "Number of Customers with Return"
+    label: "Number of Customers Returning"
     type: count_distinct
     sql: ${user_id};;
     filters: [status: "return"]
   }
 
+  measure: percentage_users_returning {
+    label: "% of Users with Returns"
+    type: number
+    value_format_name: percent_2
+    sql: 1.0 * ${customer_returned_count} / ${users.count} ;;
+  }
+
+  measure: avg_spend_per_customer {
+    label: "Average Spending per Customer"
+    type: number
+    value_format_name: usd
+    sql: 1.0 * ${total_sale_price} / ${users.count}, 0 ;;
+  }
 
   dimension_group: shipped {
     type: time
