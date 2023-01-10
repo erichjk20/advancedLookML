@@ -145,8 +145,6 @@ view: order_items {
   }
 
 
-
-
   dimension_group: shipped {
     type: time
     timeframes: [
