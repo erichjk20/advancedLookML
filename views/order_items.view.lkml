@@ -116,6 +116,37 @@ view: order_items {
     sql: ${gross_margin} ;;
   }
 
+  measure: total_gross_margin_percentage {
+    label: "Total Gross Margin Percentage"
+    type: number
+    value_format_name: percent_2
+    sql: 1.0 * ${total_gross_margin}/ nullif(${total_sale_price},0) ;;
+  }
+
+  measure: returned_count {
+    type: count_distinct
+    sql: ${id} ;;
+    filters: [status: "return"]
+
+  }
+
+  measure: return_rate {
+    label: "Return Percentage"
+    type: number
+    value_format_name: percent_2
+    sql: 1.0 * ${returned_count} / ${count} ;;
+  }
+
+  measure: customer_returned_count {
+    label: "Number of Customers with Return"
+    type: count_distinct
+    sql: ${user_id};;
+    filters: [status: "return"]
+  }
+
+
+
+
   dimension_group: shipped {
     type: time
     timeframes: [
