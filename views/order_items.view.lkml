@@ -126,7 +126,7 @@ view: order_items {
   measure: returned_count {
     type: count_distinct
     sql: ${id} ;;
-    filters: [status: "returned"]
+    filters: [status: "Returned"]
 
   }
 
@@ -141,7 +141,7 @@ view: order_items {
     label: "Number of Customers Returning"
     type: count_distinct
     sql: ${user_id};;
-    filters: [status: "returned"]
+    filters: [status: "Returned"]
   }
 
   measure: percentage_users_returning {
