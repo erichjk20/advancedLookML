@@ -87,6 +87,7 @@ view: order_items {
 
   measure: total_sale_price {
     type: sum
+    value_format: "[>=1000000]$0.00,,\"M\";[>=1000]$0.00,\"K\";$0.00"
     sql: ${sale_price} ;;
   }
 
@@ -105,7 +106,7 @@ view: order_items {
   measure: total_gross_margin {
     label: "Total Gross Margin"
     type: sum
-    value_format_name: usd
+    value_format: "[>=1000000]$0.00,,\"M\";[>=1000]$0.00,\"K\";$0.00"
     sql: ${gross_margin} ;;
   }
 
