@@ -155,7 +155,7 @@ view: order_items {
     label: "Average Spending per Customer"
     type: number
     value_format_name: usd
-    sql: 1.0 * ${total_sale_price} / ${users.count}, 0 ;;
+    sql: 1.0 * ${total_sale_price} / ${users.count};;
   }
 
   dimension_group: shipped {
