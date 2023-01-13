@@ -81,7 +81,7 @@ view: order_items {
 
   measure: revenue_percentile {
     type: percent_of_total
-    sql: ${total_gross_margin} ;;
+    sql: ${total_sale_price} ;;
   }
 
   measure: total_sale_price {
