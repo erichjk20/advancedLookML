@@ -79,6 +79,11 @@ view: order_items {
   # measures for this dimension, but you can also add measures of many different aggregates.
   # Click on the type parameter to see all the options in the Quick Help panel on the right.
 
+  measure: revenue_percentile {
+    type: percent_of_total
+    sql: ${total_gross_margin} ;;
+  }
+
   measure: total_sale_price {
     type: sum
     value_format: "[>=1000000]$0,,\"M\";[>=1000]$0,\"K\";$0"
@@ -122,7 +127,6 @@ view: order_items {
     type: count_distinct
     sql: ${id} ;;
     filters: [status: "Returned"]
-
   }
 
   measure: return_rate {
