@@ -8,6 +8,7 @@ include: "/**/*.view.lkml"                 # include all views in this project
 # # and define the joins that connect them together.
 #
 explore: order_items {
+  label: "(1) Summary"
   join: users {
     type:  left_outer
     relationship: many_to_one
