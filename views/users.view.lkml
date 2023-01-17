@@ -111,6 +111,21 @@ view: users {
     sql: ${TABLE}.zip ;;
   }
 
+  dimension: customer_type  {
+    label: "Type of Customer"
+    type: string
+    sql: CASE
+      WHEN ${days_as_customer} <= 90 THEN “New Customer”
+      WHEN ${days_as_customer} > 90 THEN “Long Term Customer”
+     END ;;
+  }
+
+  dimension: days_as_customer {
+    type: number
+    sql: DATE_DIFF(CURRENT_DATE(), ${created_date}, day);;
+  }
+
+
   measure: count {
     type: count
     drill_fields: [detail*]
