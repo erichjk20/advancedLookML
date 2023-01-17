@@ -115,8 +115,8 @@ view: users {
     label: "Type of Customer"
     type: string
     sql: CASE
-      WHEN ${days_as_customer} <= 90 THEN “New Customer”
-      WHEN ${days_as_customer} > 90 THEN “Long Term Customer”
+      WHEN ${days_as_customer} <= 90 THEN 'New Customer'
+      WHEN ${days_as_customer} > 90 THEN 'Long Term Customer'
      END ;;
   }
 
