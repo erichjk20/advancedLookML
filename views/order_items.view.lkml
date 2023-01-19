@@ -188,8 +188,8 @@ view: order_items {
     drill_fields: [detail*]
   }
 
-  measure: order_count {
-    type: count_distinct
+  dimension: order_count {
+    type: number
     sql: ${order_id} ;;
   }
 
