@@ -194,7 +194,7 @@ view: order_items {
   }
 
   measure: customer_lifetime_orders {
-    label: "Customer Life Time Order Groups"
+    label: "Customer Lifetime Order Groups"
     type: string
     sql: CASE
       WHEN ${order_count} = 1 THEN '1 Order'
@@ -205,7 +205,6 @@ view: order_items {
     END;;
 
  }
-
 
 #   case: {
 #    when: {
@@ -229,6 +228,14 @@ view: order_items {
       #  label: "10+ Orders"
       #}
     #}
+
+  dimension: customer_lifetime_revenue {
+    label: "Customer Lifetime Revenue Groups"
+    type: tier
+    tiers: [0,5,20,50,100,500,1000]
+    value_format_name: usd
+    sql: ${total_gross_margin} ;;
+  }
 
   # ----- Sets of fields for drilling ------
   set: detail {
