@@ -32,5 +32,4 @@ explore: order_items {
     relationship: one_to_many
     sql_on: ${products.id} = ${inventory_items.product_id} ;;
   }
-
- }
+}

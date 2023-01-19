@@ -188,6 +188,23 @@ view: order_items {
     drill_fields: [detail*]
   }
 
+  measure: order_count {
+    type: count_distinct
+    sql: ${order_id} ;;
+  }
+
+  measure: customer_lifetime_orders {
+    label: "Customer Life Time Order Groups"
+    type: string
+    sql: CASE
+      WHEN ${order_count} = 1 THEN '1 Order'
+      WHEN ${order_count} = 2 THEN '2 Orders'
+      WHEN ${order_count} > 2 AND <= 5 THEN '3-5 Orders'
+      WHEN ${order_count} > 5 AND <= 9 THEN '6-9 Orders'
+      WHEN ${order_count} >= 10 THEN '10+ Orders'
+    END;;
+
+  }
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
