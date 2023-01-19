@@ -188,34 +188,6 @@ view: order_items {
     drill_fields: [detail*]
   }
 
-  measure: order_count {
-    type: count_distinct
-    sql: ${order_id} ;;
-  }
-
-  measure: average_lifetime_orders {
-    type: average
-    sql: ${order_id} ;;
-  }
-
-  measure: total_order_count {
-    type: sum
-    sql: ${order_id} ;;
-  }
-
-  measure: customer_lifetime_orders {
-    label: "Customer Lifetime Order Groups"
-    type: string
-    sql: CASE
-      WHEN ${order_count} = 1 THEN '1 Order'
-      WHEN ${order_count} = 2 THEN '2 Orders'
-      WHEN ${order_count} BETWEEN 2 AND 5 THEN '3-5 Orders'
-      WHEN ${order_count} BETWEEN 5 AND 9 THEN '6-9 Orders'
-      WHEN ${order_count} > 9 THEN '10+ Orders'
-    END;;
-
- }
-
 #   case: {
 #    when: {
 #        sql: ${order_count} = 1;;
