@@ -42,7 +42,7 @@ view: customer_behavior {
       WHEN ${lifetime_orders}  = 2 THEN '2 Orders'
       WHEN ${lifetime_orders}  BETWEEN 2 AND 5 THEN '3-5 Orders'
       WHEN ${lifetime_orders}  BETWEEN 5 AND 9 THEN '6-9 Orders'
-      ELSE THEN '10+ Orders'
+      ELSE '10+ Orders'
     END;;
   }
 
