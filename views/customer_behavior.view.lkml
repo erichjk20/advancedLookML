@@ -37,13 +37,12 @@ view: customer_behavior {
   dimension: customer_lifetime_orders {
     label: "Customer Lifetime Order Groups"
     type: string
-    order_by_field: customer_lifetime_orders
     sql: CASE
-      WHEN ${lifetime_orders} = 1 THEN '1 Order'
-      WHEN ${lifetime_orders}  = 2 THEN '2 Orders'
-      WHEN ${lifetime_orders}  BETWEEN 2 AND 5 THEN '3-5 Orders'
-      WHEN ${lifetime_orders}  BETWEEN 5 AND 9 THEN '6-9 Orders'
-      WHEN ${lifetime_orders}  >= 10 THEN '10+ Orders'
+      WHEN ${lifetime_orders} = 1 THEN (1) '1 Order'
+      WHEN ${lifetime_orders}  = 2 THEN (2) '2 Orders'
+      WHEN ${lifetime_orders}  BETWEEN 2 AND 5 THEN (3) '3-5 Orders'
+      WHEN ${lifetime_orders}  BETWEEN 5 AND 9 THEN (4) '6-9 Orders'
+      WHEN ${lifetime_orders}  >= 10 THEN (5) '10+ Orders'
     END;;
   }
 
