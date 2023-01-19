@@ -206,15 +206,15 @@ view: order_items {
         label: "2 Orders"
       }
       when: {
-        sql: ${order_count} > 2 AND <= 5;;
+        sql: ${order_count} BETWEEN 2 AND 5;;
         label: "3-5 Orders"
       }
       when: {
-        sql: ${order_count} > 5 AND <= 9;;
+        sql: ${order_count} BETWEEN 5 AND 9;;
         label: "5-9 Orders"
       }
       when: {
-        sql: ${order_count} >= 10;;
+        sql: ${order_count} > 9;;
         label: "10+ Orders"
       }
     }
