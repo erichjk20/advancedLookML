@@ -193,6 +193,11 @@ view: order_items {
     sql: ${order_id} ;;
   }
 
+  measure: average_lifetime_orders {
+    type: average
+    sql: ${order_id} ;;
+  }
+
   measure: total_order_count {
     type: sum
     sql: ${order_id} ;;
