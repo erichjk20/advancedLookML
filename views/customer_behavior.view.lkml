@@ -99,4 +99,23 @@ view: customer_behavior {
     sql: ${lifetime_revenue} ;;
   }
 
+  dimension: is_active {
+    label: "Is Customer Active"
+    description: "Has the customer purchased from the website within the last 90 days"
+    type: yesno
+    sql: ${days_since_latest_order} <= 90  ;;
+  }
+
+  dimension: days_since_latest_order {
+    label: "Days Since Latest Order"
+    type: number
+    sql: DATE_DIFF(CURRENT_DATE(), ${latest_order_date}, day;;
+  }
+
+  measure: average_days_since_latest_order {
+    label: "Average Days Since Latest Order"
+    type: average
+    sql: ${days_since_latest_order} ;;
+  }
+
 }

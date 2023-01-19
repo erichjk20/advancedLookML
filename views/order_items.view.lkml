@@ -188,38 +188,6 @@ view: order_items {
     drill_fields: [detail*]
   }
 
-#   case: {
-#    when: {
-#        sql: ${order_count} = 1;;
- #       label: "1 Order"
-  #    }
-   #   when: {
-    #    sql: ${order_count} = 2;;
-     #   label: "2 Orders"
-      #}
-      #when: {
-       # sql: ${order_count} BETWEEN 2 AND 5;;
-        #label: "3-5 Orders"
-      #}
-      #when: {
-      #  sql: ${order_count} BETWEEN 5 AND 9;;
-       # label: "5-9 Orders"
-      #}
-      #when: {
-      #  sql: ${order_count} > 9;;
-      #  label: "10+ Orders"
-      #}
-    #}
-
-  dimension: customer_lifetime_revenue {
-    label: "Customer Lifetime Revenue Groups"
-    type: tier
-    tiers: [0,5,20,50,100,500,1000]
-    value_format_name: usd
-    sql: ${total_gross_margin} ;;
-  }
-
-
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
