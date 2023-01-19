@@ -42,13 +42,14 @@ view: customer_behavior {
       WHEN ${lifetime_orders}  = 2 THEN '2 Orders'
       WHEN ${lifetime_orders}  BETWEEN 2 AND 5 THEN '3-5 Orders'
       WHEN ${lifetime_orders}  BETWEEN 5 AND 9 THEN '6-9 Orders'
-      ELSE '10+ Orders'
+      WHEN ${lifetime_orders}  >= 10 THEN '10+ Orders'
     END;;
   }
 
   dimension: lifetime_revenue {
     label: "Lifetime Revenue"
     type: number
+    value_format_name: usd_0
     sql:${TABLE}.lifetime_revenue ;;
   }
 
