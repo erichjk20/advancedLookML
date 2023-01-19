@@ -14,7 +14,7 @@ view: customer_behavior {
     }
 
   measure: count {
-    type: count_distinct
+    type: count
     drill_fields: [detail*]
   }
 
