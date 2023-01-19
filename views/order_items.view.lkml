@@ -199,9 +199,9 @@ view: order_items {
     sql: CASE
       WHEN ${order_count} = 1 THEN '1 Order'
       WHEN ${order_count} = 2 THEN '2 Orders'
-      WHEN ${order_count} > 2 AND <= 5 THEN '3-5 Orders'
-      WHEN ${order_count} > 5 AND <= 9 THEN '6-9 Orders'
-      WHEN ${order_count} >= 10 THEN '10+ Orders'
+      WHEN ${order_count} > 2 AND < 6 THEN '3-5 Orders'
+      WHEN ${order_count} > 5 AND < 10 THEN '6-9 Orders'
+      WHEN ${order_count} > 9 THEN '10+ Orders'
     END;;
 
   }
