@@ -49,7 +49,6 @@ view: customer_behavior {
   dimension: lifetime_revenue {
     label: "Lifetime Revenue"
     type: number
-    value_format_name: usd_0
     sql:${TABLE}.lifetime_revenue ;;
   }
 
@@ -91,12 +90,14 @@ view: customer_behavior {
   measure: total_lifetime_revenue {
     label: "Total Lifetime Revenue"
     type: sum
+    value_format_name: usd_0
     sql: ${lifetime_revenue} ;;
   }
 
   measure: average_lifetime_revenue {
     label: "Average Lifetime Revene"
     type: average
+    value_format_name: usd_0
     sql: ${lifetime_revenue} ;;
   }
 
