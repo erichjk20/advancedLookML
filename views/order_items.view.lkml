@@ -193,6 +193,11 @@ view: order_items {
     sql: ${order_id} ;;
   }
 
+  measure: total_order_count {
+    type: sum
+    sql: ${order_id} ;;
+  }
+
   measure: customer_lifetime_orders {
     label: "Customer Lifetime Order Groups"
     type: string
@@ -236,6 +241,7 @@ view: order_items {
     value_format_name: usd
     sql: ${total_gross_margin} ;;
   }
+
 
   # ----- Sets of fields for drilling ------
   set: detail {
