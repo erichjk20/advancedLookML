@@ -29,12 +29,22 @@ view: customer_behavior {
   }
 
   dimension: lifetime_orders {
-    label: "Total Number of Orders"
+    label: "Total Lifetime Orders"
     type: number
     sql: ${TABLE}.lifetime_orders ;;
   }
 
-
+  dimension: customer_lifetime_orders {
+    label: "Customer Lifetime Order Groups"
+    type: string
+    sql: CASE
+      WHEN ${lifetime_orders} = 1 THEN '1 Order'
+      WHEN ${lifetime_orders}  = 2 THEN '2 Orders'
+      WHEN ${lifetime_orders}  BETWEEN 2 AND 5 THEN '3-5 Orders'
+      WHEN ${lifetime_orders}  BETWEEN 5 AND 9 THEN '6-9 Orders'
+      WHEN ${lifetime_orders}  > 9 THEN '10+ Orders'
+    END;;
+  }
 
   dimension: lifetime_revenue {
     label: "Total Sum of Revenue"
