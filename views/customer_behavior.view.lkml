@@ -37,6 +37,7 @@ view: customer_behavior {
   dimension: customer_lifetime_orders {
     label: "Customer Lifetime Order Groups"
     type: string
+    order_by_field: customer_lifetime_orders
     sql: CASE
       WHEN ${lifetime_orders} = 1 THEN '1 Order'
       WHEN ${lifetime_orders}  = 2 THEN '2 Orders'
