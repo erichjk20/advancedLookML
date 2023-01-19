@@ -230,14 +230,6 @@ view: order_items {
       #}
     #}
 
-      #WHEN ${order_count} = 1 THEN '1 Order'
-      #WHEN ${order_count} = 2 THEN '2 Orders'
-      #WHEN ${order_count} BETWEEN 2 AND 5 THEN '3-5 Orders'
-      #WHEN ${order_count} BETWEEN 5 AND 9 THEN '6-9 Orders'
-      #WHEN ${order_count} > 9 THEN '10+ Orders'
-      #END;;
-
-
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
