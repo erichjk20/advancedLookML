@@ -196,15 +196,38 @@ view: order_items {
   measure: customer_lifetime_orders {
     label: "Customer Life Time Order Groups"
     type: string
-    sql: CASE
-      WHEN ${order_count} = 1 THEN '1 Order'
-      WHEN ${order_count} = 2 THEN '2 Orders'
-      WHEN ${order_count} > 2 AND <= 5 THEN '3-5 Orders'
-      WHEN ${order_count} > 5 AND <= 9 THEN '6-9 Orders'
-      WHEN ${order_count} => 10 THEN '10+ Orders'
-    END;;
-
+    case: {
+      when: {
+        sql: ${order_count} = 1;;
+        label: "1 Order"
+      }
+      when: {
+        sql: ${order_count} = 2;;
+        label: "2 Orders"
+      }
+      when: {
+        sql: ${order_count} > 2 AND <= 5;;
+        label: "3-5 Orders"
+      }
+      when: {
+        sql: ${order_count} > 5 AND <= 9;;
+        label: "5-9 Orders"
+      }
+      when: {
+        sql: ${order_count} >= 10;;
+        label: "10+ Orders"
+      }
+    }
   }
+
+      #WHEN ${order_count} = 1 THEN '1 Order'
+      #WHEN ${order_count} = 2 THEN '2 Orders'
+      #WHEN ${order_count} > 2 AND <= 5 THEN '3-5 Orders'
+      #WHEN ${order_count} > 5 AND <= 9 THEN '6-9 Orders'
+      #WHEN ${order_count} => 10 THEN '10+ Orders'
+      #END;;
+
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
