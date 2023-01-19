@@ -32,4 +32,10 @@ explore: order_items {
     relationship: one_to_many
     sql_on: ${products.id} = ${inventory_items.product_id} ;;
   }
+
+  join: customer_behavior {
+    type: left_outer
+    relationship: many_to_many
+    sql_on: ${customer_behavior.user_id} = ${order_items.user_id} ;;
+  }
 }
