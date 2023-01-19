@@ -56,7 +56,6 @@ view: customer_behavior {
     label: "Lifetime Revenue Groups"
     type: tier
     tiers: [0,5,20,50,100,500,1000]
-    value_format_name:usd
     sql: ${lifetime_revenue} ;;
   }
 
