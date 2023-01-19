@@ -52,6 +52,14 @@ view: customer_behavior {
     sql:${TABLE}.lifetime_revenue ;;
   }
 
+  dimension: lifetime_revenue_group {
+    label: "Lifetime Revenue Groups"
+    type: tier
+    tiers: [0,5,20,50,100,500,1000]
+    value_format_name:usd
+    sql: ${lifetime_revenue} ;;
+  }
+
   dimension_group: first_order {
     label: "First Order Date"
     type: time
