@@ -118,4 +118,17 @@ view: customer_behavior {
     sql: ${days_since_latest_order} ;;
   }
 
+  dimension: repeate_customer {
+    label: "Repeat Customer"
+    type: yesno
+    sql: ${lifetime_orders} >= 2 ;;
+  }
+
+  measure: repeat_purchase_rate {
+    label: "Repeat Purchase Rate"
+    type: number
+    value_format_name: percent_2
+    sql: ${repeate_customer} / ${lifetime_orders} >=1, 0 ;;
+  }
+
 }
