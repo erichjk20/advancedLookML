@@ -29,7 +29,7 @@ view: customer_behavior {
   }
 
   dimension: lifetime_orders {
-    label: "Total Lifetime Orders"
+    label: "Lifetime Orders"
     type: number
     sql: ${TABLE}.lifetime_orders ;;
   }
@@ -47,7 +47,7 @@ view: customer_behavior {
   }
 
   dimension: lifetime_revenue {
-    label: "Total Sum of Revenue"
+    label: "Lifetime Revenue"
     type: number
     sql:${TABLE}.lifetime_revenue ;;
   }
@@ -75,5 +75,28 @@ view: customer_behavior {
     sql: ${TABLE}.latest_order ;;
   }
 
+  measure: total_lifetime_orders {
+    label: "Total Lifetime Orders"
+    type: sum
+    sql: ${lifetime_orders} ;;
+  }
+
+  measure: average_lifetime_orders {
+    label: "Average Lifetime Orders"
+    type: average
+    sql: ${lifetime_orders} ;;
+  }
+
+  measure: total_lifetime_revenue {
+    label: "Total Lifetime Revenue"
+    type: sum
+    sql: ${lifetime_revenue} ;;
+  }
+
+  measure: average_lifetime_revenue {
+    label: "Average Lifetime Revene"
+    type: average
+    sql: ${lifetime_revenue} ;;
+  }
 
 }
