@@ -37,12 +37,25 @@ view: customer_behavior {
   dimension: customer_lifetime_orders {
     label: "Customer Lifetime Order Groups"
     type: string
+    order_by_field: clo2
     sql: CASE
       WHEN ${lifetime_orders} = 1 THEN '(1)1 Order'
       WHEN ${lifetime_orders}  = 2 THEN '(2) 2 Orders'
       WHEN ${lifetime_orders}  BETWEEN 2 AND 5 THEN '(3) 3-5 Orders'
       WHEN ${lifetime_orders}  BETWEEN 5 AND 9 THEN '(4) 6-9 Orders'
       WHEN ${lifetime_orders}  >= 10 THEN '(5) 10+ Orders'
+    END;;
+  }
+
+  dimension: clo2 {
+    type: number
+    hidden: yes
+    sql: CASE
+    WHEN ${lifetime_orders} = 1 THEN 1
+    WHEN ${lifetime_orders}  = 2 THEN 2
+    WHEN ${lifetime_orders}  BETWEEN 2 AND 5 THEN 3
+    WHEN ${lifetime_orders}  BETWEEN 5 AND 9 THEN 4
+    WHEN ${lifetime_orders}  >= 10 THEN 5
     END;;
   }
 
@@ -120,17 +133,29 @@ view: customer_behavior {
     sql: ${days_since_latest_order} ;;
   }
 
-  dimension: repeate_customer {
+  dimension: repeat_customer {
     label: "Repeat Customer"
     type: yesno
     sql: ${lifetime_orders} >= 2 ;;
+  }
+
+  measure: total_repeat_customers {
+    type: count_distinct
+    filters: [repeat_customer: "yes"]
+    sql: ${user_id};;
+  }
+
+  measure: total_customers_with_1_order{
+    type: count_distinct
+    filters: [lifetime_orders: ">=1"]
+    sql: ${user_id};;
   }
 
   measure: repeat_purchase_rate {
     label: "Repeat Purchase Rate"
     type: number
     value_format_name: percent_2
-    sql: ${repeate_customer} / ${lifetime_orders} >=1, 0 ;;
+    sql: 1.0 * ${total_repeat_customers} / ${total_customers_with_1_order} ;;
   }
 
 }
