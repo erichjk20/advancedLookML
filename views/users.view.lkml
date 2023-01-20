@@ -121,16 +121,23 @@ view: users {
      END ;;
   }
 
-  dimension: days_as_customer {
-    label: "Days Since Sign Up"
-    type: number
-    sql: DATE_DIFF(CURRENT_DATE(), ${created_date}, day);;
-  }
+  # dimension: days_as_customer {
+  #   label: "Days Since Sign Up"
+  #   type: number
+  #   sql: DATE_DIFF(CURRENT_DATE(), ${created_date}, day);;
+  # }
 
-  dimension: months_as_customer {
-    label: "Months Since Sign Up"
-    type: number
-    sql: DATE_DIFF(CURRENT_DATE(), ${created_date}, month ;;
+  # dimension: months_as_customer {
+  #   label: "Months Since Sign Up"
+  #   type: number
+  #   sql: DATE_DIFF(CURRENT_DATE(), ${created_date}, month) ;;
+  # }
+
+  dimension_group: as_customer {
+    type: duration
+    intervals: [day, month, quarter, year]
+    sql_start: ${created_date} ;;
+    sql_end: CURRENT_DATE ;;
   }
 
   measure: average_number_of_days {
