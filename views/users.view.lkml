@@ -149,11 +149,11 @@ view: users {
     label: "Cohort by Months Signed Up"
     type: string
     sql: CASE
-      WHEN ${months_as_customer} BETWEEN 0 AND 1 THEN "Less than 1 month"
-      WHEN ${months_as_customer} BETWEEN 2 AND 3 THEN "2-3 months"
-      WHEN ${months_as_customer} BETWEEN 4 AND 6 THEN "4-6 months"
-      WHEN ${months_as_customer} BETWEEN 7 AND 9 THEN "7-9 months"
-      WHEN ${months_as_customer} BETWEEN 10 AND 12 THEN "10-12 months"
+      WHEN ${months_as_customer} BETWEEN 0 AND 1 THEN 'Less than 1 month'
+      WHEN ${months_as_customer} BETWEEN 2 AND 3 THEN '2-3 months'
+      WHEN ${months_as_customer} BETWEEN 4 AND 6 THEN '4-6 months'
+      WHEN ${months_as_customer} BETWEEN 7 AND 9 THEN '7-9 months'
+      WHEN ${months_as_customer} BETWEEN 10 AND 12 THEN '10-12 months'
       ELSE "12+ months";;
   }
 
