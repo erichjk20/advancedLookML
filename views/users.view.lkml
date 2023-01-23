@@ -121,23 +121,11 @@ view: users {
      END ;;
   }
 
-  # dimension: days_as_customer {
-  #   label: "Days Since Sign Up"
-  #   type: number
-  #   sql: DATE_DIFF(CURRENT_DATE(), ${created_date}, day);;
-  # }
-
-  # dimension: months_as_customer {
-  #   label: "Months Since Sign Up"
-  #   type: number
-  #   sql: DATE_DIFF(CURRENT_DATE(), ${created_date}, month) ;;
-  # }
-
   dimension_group: as_customer {
     type: duration
     intervals: [day, month, quarter, year]
-    sql_start: ${created_date} ;;
-    sql_end: CURRENT_DATE ;;
+    sql_start: ${created_raw} ;;
+    sql_end: CURRENT_TIMESTAMP() ;;
   }
 
   measure: average_number_of_days {
@@ -155,6 +143,7 @@ view: users {
   dimension: cohort_by_months {
     label: "Cohort by Months Signed Up"
     type: string
+    order_by_field: cbm2
     sql: CASE
       WHEN ${months_as_customer} BETWEEN 0 AND 1 THEN 'Less than 1 month'
       WHEN ${months_as_customer} BETWEEN 2 AND 3 THEN '2-3 months'
@@ -163,6 +152,20 @@ view: users {
       WHEN ${months_as_customer} BETWEEN 10 AND 12 THEN '10-12 months'
       ELSE "12+ months"
     END;;
+  }
+
+  dimension: cbm2 {
+    description: "Ordering cohort_by_months"
+    type: number
+    hidden: yes
+    sql: CASE
+      WHEN ${months_as_customer} BETWEEN 0 AND 1 THEN 1
+      WHEN ${months_as_customer} BETWEEN 2 AND 3 THEN 2
+      WHEN ${months_as_customer} BETWEEN 4 AND 6 THEN 3
+      WHEN ${months_as_customer} BETWEEN 7 AND 9 THEN 4
+      WHEN ${months_as_customer} BETWEEN 10 AND 12 THEN 5
+      ELSE 6
+    END ;;
   }
 
 
