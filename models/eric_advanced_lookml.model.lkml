@@ -35,22 +35,6 @@ explore: events {
 
 explore: distribution_centers {}
 
-explore: order_items_test2 {
-  join: users {
-    type: left_outer
-    sql_on: ${order_items_test2.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
-}
-
-explore: order_items_test {
-  join: users {
-    type: left_outer
-    sql_on: ${order_items_test.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
-}
-
 explore: order_items {
   join: users {
     type: left_outer
