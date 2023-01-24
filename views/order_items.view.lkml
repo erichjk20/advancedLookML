@@ -188,6 +188,35 @@ view: order_items {
     drill_fields: [detail*]
   }
 
+  # parameter: date_granularity {
+  #   type: unquoted
+  #   allowed_value: {
+  #     label: "Break down by Day"
+  #     value: "day"
+  #   }
+  #   allowed_value: {
+  #     label: "Break down by Week"
+  #     value: "week"
+  #   }
+  #   allowed_value: {
+  #     label: "Break down by Month"
+  #     value: "month"
+  #   }
+  # }
+
+  # dimension: date {
+  #   sql:
+  #   {% if date_granularity._parameter_value == 'day' %}
+  #     ${created_date}
+  #   {% elsif date_granularity._parameter_value == 'week' %}
+  #     ${created_week}
+  #   {% elsif date_granularity._parameter_value == 'month' %}
+  #     ${created_month}
+  #   {% else %}
+  #     ${created_at}
+  #   {% endif %};;
+  # }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
@@ -200,4 +229,6 @@ view: order_items {
       orders.order_id
     ]
   }
+
+
 }

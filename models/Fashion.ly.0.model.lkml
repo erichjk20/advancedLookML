@@ -38,4 +38,10 @@ explore: order_items {
     relationship: many_to_many
     sql_on: ${customer_behavior.user_id} = ${order_items.user_id} ;;
   }
+
+  join: order_patterns {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${order_patterns.user_id} = ${order_items.user_id} ;;
+  }
 }
