@@ -2,7 +2,7 @@
 view: order_items {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `thelook.order_items`
+  sql_table_name: `order_items`
     ;;
   drill_fields: [id]
   # This primary key is the unique key for this table in the underlying database.

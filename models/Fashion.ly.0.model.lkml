@@ -7,7 +7,14 @@ include: "/**/*.view.lkml"                 # include all views in this project
 # # Select the views that should be a part of this model,
 # # and define the joins that connect them together.
 #
+
+access_grant: can_see_pii {
+  user_attribute: can_see_sensitive_data
+  allowed_values: [ "yes" ]
+}
+
 explore: order_items {
+
   access_filter: {
     field: products.brand
     user_attribute: brand

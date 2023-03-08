@@ -4,6 +4,7 @@ view: users {
   # to be used for all fields in this view.
   sql_table_name: `thelook.users`
     ;;
+
   drill_fields: [id]
   # This primary key is the unique key for this table in the underlying database.
   # You need to define a primary key in a view in order to join to other views.
@@ -68,6 +69,7 @@ view: users {
 
   dimension: email {
     type: string
+    required_access_grants: [can_see_pii]
     sql: ${TABLE}.email ;;
   }
 

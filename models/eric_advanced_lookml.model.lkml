@@ -21,6 +21,12 @@ persist_with: eric_advanced_lookml_default_datagroup
 
 # To see the Explore you’re building, navigate to the Explore menu and select an Explore under "Eric Advanced Lookml"
 
+access_grant: can_see_pii {
+  user_attribute: can_see_sensitive_data
+  allowed_values: [ "yes" ]
+}
+
+
 explore: events {
   join: users {
     type: left_outer
